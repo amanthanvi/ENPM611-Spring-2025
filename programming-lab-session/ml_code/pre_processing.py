@@ -5,7 +5,7 @@
 # || END LECTURE NOTES ||
 
 # Used to split the data into training and testing sets
-from sklearn.preprocessing import train_test_split
+from sklearn.model_selection import train_test_split
 # Used to convert categorical values into numerical values
 from sklearn.preprocessing import LabelEncoder
 
@@ -15,21 +15,18 @@ def preprocess_data(data):
     Preprocess the data by scaling the features and splitting it into training and testing sets.
     """
     # Drop unnecessary columns
-    data = data.drop(columns=['EmployeeCount', 'EmployeeNumber',
-                     'Over18', 'StandardHours'], axis="columns", inplace=True)
-    # Convert categorical values into numerical values
-    label_encoder = LabelEncoder()
-    data['Attrition'] = label_encoder.fit_transform(data['Attrition'])
+    data.drop(columns=['EmployeeCount', 'EmployeeNumber',
+                       'Over18', 'StandardHours'], axis="columns", inplace=True)  # Using inplace=True to modify the original dataframe
 
     categorical_columns = []  # List of categorical columns
     for column in data.columns:  # Iterate through each column
         # Check if the column is categorical and has less than 50 unique values
-        if data[column].dtype == 'object' and len(data[column].unique()) <= 50:
+        if data[column].dtype == object and len(data[column].unique()) <= 50:
             categorical_columns.append(column)  # Add the column to the list
 
     # Here the Attribution column is is being converted to a categorical data type using .astype('category')
     # .cat.codes is used to convert the categorical values into numerical values
-    data['Attrition'] = data['Attrition'].astype('category').cat.codes
+    data['Attrition'] = data.Attrition.astype('category').cat.codes
 
     # Remove the Attribution column from the list of categorical columns
     categorical_columns.remove('Attrition')
@@ -42,7 +39,7 @@ def preprocess_data(data):
     print(data.head())  # Print the first 5 rows of the data
 
     # We are going to drop the target variable "Attrition" from the data leaving only input features
-    X = data.drop(columns=['Attrition'], axis=1)
+    X = data.drop("Attrition", axis=1)
     y = data.Attrition  # Target variable
 
     # Split the data into training and testing sets
