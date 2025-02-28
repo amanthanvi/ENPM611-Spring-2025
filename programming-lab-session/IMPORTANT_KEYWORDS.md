@@ -1,0 +1,8 @@
+-   **Decision Tree**: like a fun guessing game where you keep asking questions until you find the answer.
+-   **Random Forest**: an example of ensemble learning where multiple models (decision trees) are trained, and their results are combined (in **classification**, Random Forest makes predictions by taking the **majority vote** of all the individual decision trees)
+-   **CountPlot**: type of plot that shows the counts of observations in each categorical bin using bars.
+-   **Attrition**: In human resources, employee attrition refers to the loss of employees due to voluntary reasons.
+-   **Confusion matrix**: used to evaluate the performance of a classification algorithm (Accuracy is the ratio of correctly predicted instances (TP + TN) to the total number of instances.)
+-   **LabelEncoder**: Assign each unique value of a column an integer value.
+-   **Fit_transform**: learns a unique value in a column and then transforms each value in a column into its corresponding integer label.
+-   **Categorical Data**: data that represents categories or discrete values and is a finite set of values. Ex: gender, countries.
